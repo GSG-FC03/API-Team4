@@ -1,11 +1,18 @@
 let container = document.getElementById("container");
+let submit = document.getElementsByClassName('btn')[0];
+let review = document.getElementsByClassName('review')[0];
+let popResult = document.getElementById('popResult');
+let result = document.getElementById('result');
 
+let correct = [];
 fetch(
-  "https://opentdb.com/api.php?amount=30&category=18&difficulty=medium&type=multiple"
+  "https://opentdb.com/api.php?amount=15&category=18&difficulty=medium&type=multiple"
 )
   .then((Response) => Response.json())
   .then((Data) => {
     Data.results.forEach((quesObj) => {
+      correct.push(quesObj.correct_answer);
+    
       const question = document.createElement("div");
       question.setAttribute("class", "question"),
         container.appendChild(question);
@@ -44,4 +51,28 @@ fetch(
 
 function shuffle(array) {
   array.sort(() => Math.random() - 0.5);
+}
+
+let grade = 0;
+
+window.onclick = function (event) {
+  let nodes = Array.prototype.slice.call(container.childNodes);
+  console.log(nodes)
+  let index = nodes.indexOf(event.target.parentElement.parentElement)-1;
+  if(event.target.getAttribute("class") == 'choice-text'){
+      if(event.target.textContent == correct[index]){
+          event.target.style.backgroundColor = '#79FF79';
+          grade++;
+      }
+      else event.target.style.backgroundColor='#ed413e';
+  }    
+  
+  if (event.target.getAttribute("class") != "btn") {
+    popResult.style.display = "none";
+  }  
+};
+
+submit.onclick = function(){
+  popResult.style.display = "block";
+  result.textContent = 'Youre Grade: '+grade+'/15';
 }

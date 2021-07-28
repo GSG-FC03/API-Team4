@@ -64,4 +64,62 @@ body {
   margin-bottom: 20px;
   font-weight: 700;
 }
+.header {
+  color: rebeccapurple;
+  margin: 20px;
+  font-size: 45px;
+}
 
+.review {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 40px;
+}
+
+.btn {
+  color: white;
+  background-color: rebeccapurple;
+  border: none;
+  border-radius: 10px;
+  margin: 20px;
+  width: 150px;
+  height: 60px;
+  font-size: 25px;
+}
+
+.btn:hover {
+  cursor: pointer;
+  box-shadow: 0 0.4rem 1.4rem 0 rgba(86, 185, 235, 0.5);
+  transform: translateY(-0.1rem);
+  transition: transform 150ms;
+}
+
+.result {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  padding-top: 150px;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.result-content {
+  background-color: #fefefe;
+  margin: auto;
+  padding: 20px;
+  width: 350px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 15px;
+}
+#result {
+  font-size: 30px;
+  color: rebeccapurple;
+}
